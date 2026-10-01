@@ -26,6 +26,7 @@ GRIS = (76, 99, 87)
 MIN_PX = 1000                # tamaño mínimo exigido
 BOX_SIZE = 40                # px por módulo -> QR de ~1480 px de lado
 BORDER = 4                   # zona silenciosa estándar (4 módulos)
+DPI = (300, 300)             # metadato de impresión (13,9 cm de lado aprox.)
 
 
 def build_qr():
@@ -55,7 +56,7 @@ def main():
     qr_img = qr.make_image(fill_color=BOSQUE, back_color=BLANCO).convert("RGB")
 
     # --- 1) QR puro -------------------------------------------------------
-    qr_img.save("qr-cpa-losalerces.png", "PNG", optimize=True)
+    qr_img.save("qr-cpa-losalerces.png", "PNG", optimize=True, dpi=DPI)
     ancho, alto = qr_img.size
     print("qr-cpa-losalerces.png       -> %dx%d px, %d módulos, nivel M"
           % (ancho, alto, qr.modules_count))
@@ -97,7 +98,7 @@ def main():
     w = d.textbbox((0, 0), URL, font=f_url)[2]
     d.text(((W - w) / 2, y), URL, font=f_url, fill=BOSQUE)
 
-    poster.save("qr-cpa-losalerces-poster.png", "PNG", optimize=True)
+    poster.save("qr-cpa-losalerces-poster.png", "PNG", optimize=True, dpi=DPI)
     print("qr-cpa-losalerces-poster.png -> %dx%d px" % poster.size)
     print("URL codificada: %s" % URL)
 
