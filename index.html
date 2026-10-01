@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Centro de Padres Colegio Los Alerces</title>
+<meta name="description" content="Datos de transferencia bancaria del Centro de Padres Colegio Los Alerces. Toca cualquier dato para copiarlo.">
+<meta name="theme-color" content="#14532d" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0d1512" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-title" content="CPA Los Alerces">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2314532d'/%3E%3Cpath d='M16 24c0-6 3.5-10 8-11-1 6-4 9-8 11z' fill='%239adcb4'/%3E%3Cpath d='M16 24c0-6-3.5-10-8-11 1 6 4 9 8 11z' fill='%235fc08a'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#eef3ee;
+    --bg-accent:#e2ebe3;
+    --card:#ffffff;
+    --card-soft:#f5f8f5;
+    --text:#0f2318;
+    --text-soft:#4c6357;
+    --line:#d5e2d7;
+    --brand:#14532d;
+    --brand-2:#1d6b3d;
+    --brand-ink:#ffffff;
+    --ok:#0f7a45;
+    --ok-bg:#e2f4e7;
+    --shadow:0 1px 2px rgba(15,35,24,.06), 0 8px 24px rgba(15,35,24,.08);
+    --radius:16px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0b120e;
+      --bg-accent:#101a14;
+      --card:#131f18;
+      --card-soft:#182721;
+      --text:#e9f2ec;
+      --text-soft:#9fb3a7;
+      --line:#26382e;
+      --brand:#2f9e5f;
+      --brand-2:#3fb972;
+      --brand-ink:#04160c;
+      --ok:#7fe0a6;
+      --ok-bg:#14301f;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 28px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(1200px 420px at 50% -160px, var(--bg-accent), transparent 70%),
+      var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    font-size:17px;
+    line-height:1.45;
+    -webkit-font-smoothing:antialiased;
+    -webkit-text-size-adjust:100%;
+    padding:max(18px, env(safe-area-inset-top)) 16px calc(24px + env(safe-area-inset-bottom));
+    min-height:100vh;
+  }
+  .wrap{max-width:520px;margin:0 auto}
+
+  /* ---------- Encabezado ---------- */
+  header{text-align:center;padding:8px 4px 20px}
+  .mark{
+    width:60px;height:60px;margin:0 auto 14px;border-radius:18px;
+    background:linear-gradient(160deg,var(--brand-2),var(--brand));
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:var(--shadow);
+  }
+  .mark svg{width:34px;height:34px;display:block}
+  h1{font-size:1.44rem;line-height:1.25;margin:0 0 6px;letter-spacing:-.01em}
+  .sub{margin:0;color:var(--text-soft);font-size:.95rem}
+
+  /* ---------- Tarjeta principal ---------- */
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .card-pad{padding:16px}
+  .hint{
+    margin:0 0 12px;font-size:.82rem;color:var(--text-soft);
+    text-align:center;letter-spacing:.01em;
+  }
+
+  .btn-copy-all{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    width:100%;min-height:58px;padding:16px 18px;
+    border:0;border-radius:14px;cursor:pointer;
+    background:linear-gradient(165deg,var(--brand-2),var(--brand));
+    color:var(--brand-ink);
+    font:inherit;font-size:1.06rem;font-weight:700;letter-spacing:.01em;
+    box-shadow:0 6px 18px rgba(20,83,45,.28);
+    transition:transform .12s ease, filter .12s ease, background .18s ease;
+    -webkit-tap-highlight-color:transparent;
+    touch-action:manipulation;
+  }
+  .btn-copy-all:active{transform:scale(.985);filter:brightness(1.04)}
+  .btn-copy-all:focus-visible{outline:3px solid var(--brand-2);outline-offset:3px}
+  .btn-copy-all .ico{flex:0 0 auto;width:21px;height:21px}
+  .btn-copy-all.done{background:linear-gradient(165deg,var(--ok),var(--ok));color:var(--ok-bg)}
+
+  /* ---------- Filas de datos ---------- */
+  .rows{margin:16px -16px 0;border-top:1px solid var(--line)}
+  .row{
+    display:flex;align-items:center;gap:12px;width:100%;
+    padding:14px 16px;
+    background:transparent;border:0;border-bottom:1px solid var(--line);
+    font:inherit;color:inherit;text-align:left;cursor:pointer;
+    transition:background .16s ease;
+    -webkit-tap-highlight-color:transparent;
+    touch-action:manipulation;
+  }
+  .row:last-child{border-bottom:0}
+  .row:active{background:var(--card-soft)}
+  .row:focus-visible{outline:2px solid var(--brand-2);outline-offset:-2px}
+  .row .field{
+    flex:1 1 auto;min-width:0;
+  }
+  .row .label{
+    display:block;font-size:.72rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.08em;color:var(--text-soft);
+    margin-bottom:2px;
+  }
+  .row .value{
+    display:block;font-size:1.06rem;font-weight:650;letter-spacing:.01em;
+    word-break:break-word;overflow-wrap:anywhere;
+  }
+  .chip{
+    flex:0 0 auto;
+    font-size:.78rem;font-weight:700;letter-spacing:.02em;
+    color:var(--brand);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:6px 11px;
+    white-space:nowrap;
+    transition:color .16s ease, background .16s ease, border-color .16s ease;
+  }
+  @media (prefers-color-scheme: dark){
+    .chip{color:var(--brand-2)}
+  }
+  .row.copied{background:var(--ok-bg)}
+  .row.copied .chip{color:var(--ok);border-color:var(--ok);background:transparent}
+
+  /* ---------- Pie ---------- */
+  footer{margin-top:22px;text-align:center;padding:0 6px}
+  .send{
+    font-size:.95rem;color:var(--text-soft);margin:0 0 12px;
+  }
+  .send a{
+    color:var(--brand);font-weight:650;text-decoration:underline;
+    text-underline-offset:2px;word-break:break-word;
+  }
+  @media (prefers-color-scheme: dark){ .send a{color:var(--brand-2)} }
+  .note{
+    font-size:.78rem;color:var(--text-soft);opacity:.85;
+    margin:0;line-height:1.5;
+  }
+  .sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important}
+  }
+  @media (min-width:600px){
+    body{padding-top:38px}
+    h1{font-size:1.6rem}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="mark" aria-hidden="true">
+      <svg viewBox="0 0 32 32" fill="none">
+        <path d="M16 27c0-7 4-12 10-13.5C25.2 21 21 25.2 16 27z" fill="#9adcb4"/>
+        <path d="M16 27c0-7-4-12-10-13.5C6.8 21 11 25.2 16 27z" fill="#5fc08a"/>
+        <path d="M16 4v23" stroke="#eaf7ef" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <h1>Centro de Padres Colegio Los Alerces</h1>
+    <p class="sub">Datos para transferencia bancaria</p>
+  </header>
+
+  <main class="card">
+    <div class="card-pad">
+      <p class="hint">Toca un dato para copiarlo, o usa el botón para copiarlos todos.</p>
+
+      <button id="copyAll" class="btn-copy-all" type="button">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="9" y="9" width="11" height="11" rx="2.2" stroke="currentColor" stroke-width="1.9"/>
+          <path d="M15 6.2A2.2 2.2 0 0 0 12.8 4H6.2A2.2 2.2 0 0 0 4 6.2v6.6A2.2 2.2 0 0 0 6.2 15" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
+        </svg>
+        <span id="copyAllText">Copiar todos los datos</span>
+      </button>
+
+      <div class="rows" id="rows">
+        <button class="row" type="button" data-field="Nombre" data-value="Centro de Padres Colegio Los Alerces">
+          <span class="field">
+            <span class="label">Nombre</span>
+            <span class="value">Centro de Padres Colegio Los Alerces</span>
+          </span>
+          <span class="chip" aria-hidden="true">Copiar</span>
+        </button>
+
+        <button class="row" type="button" data-field="RUT" data-value="74.754.200-7">
+          <span class="field">
+            <span class="label">RUT</span>
+            <span class="value">74.754.200-7</span>
+          </span>
+          <span class="chip" aria-hidden="true">Copiar</span>
+        </button>
+
+        <button class="row" type="button" data-field="Banco" data-value="BCI">
+          <span class="field">
+            <span class="label">Banco</span>
+            <span class="value">BCI</span>
+          </span>
+          <span class="chip" aria-hidden="true">Copiar</span>
+        </button>
+
+        <button class="row" type="button" data-field="Tipo de cuenta" data-value="Cuenta Corriente">
+          <span class="field">
+            <span class="label">Tipo de cuenta</span>
+            <span class="value">Cuenta Corriente</span>
+          </span>
+          <span class="chip" aria-hidden="true">Copiar</span>
+        </button>
+
+        <button class="row" type="button" data-field="N° de cuenta" data-value="13543750">
+          <span class="field">
+            <span class="label">N° de cuenta</span>
+            <span class="value">13543750</span>
+          </span>
+          <span class="chip" aria-hidden="true">Copiar</span>
+        </button>
+
+        <button class="row" type="button" data-field="Correo" data-value="centrodepadres@colegiolosalerces.cl">
+          <span class="field">
+            <span class="label">Correo</span>
+            <span class="value">centrodepadres@colegiolosalerces.cl</span>
+          </span>
+          <span class="chip" aria-hidden="true">Copiar</span>
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p class="send">Envía el comprobante a <a href="mailto:centrodepadres@colegiolosalerces.cl">centrodepadres@colegiolosalerces.cl</a></p>
+    <p class="note">Centro de Padres Colegio Los Alerces · Verifica los datos antes de confirmar la transferencia.</p>
+  </footer>
+
+  <p class="sr" id="live" role="status" aria-live="polite"></p>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var live = document.getElementById("live");
+  var btnAll = document.getElementById("copyAll");
+  var btnAllText = document.getElementById("copyAllText");
+  var rows = Array.prototype.slice.call(document.querySelectorAll(".row"));
+
+  function announce(msg) {
+    if (live) { live.textContent = msg; }
+  }
+
+  /* Respaldo para navegadores/celulares antiguos sin Clipboard API */
+  function legacyCopy(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.top = "0";
+    ta.style.left = "0";
+    ta.style.width = "1px";
+    ta.style.height = "1px";
+    ta.style.padding = "0";
+    ta.style.border = "0";
+    ta.style.opacity = "0";
+    ta.style.fontSize = "16px"; /* evita zoom automático en iOS */
+    document.body.appendChild(ta);
+
+    var selection = window.getSelection ? window.getSelection() : null;
+    var savedRange = null;
+    if (selection && selection.rangeCount > 0) { savedRange = selection.getRangeAt(0); }
+
+    var ok = false;
+    try {
+      ta.focus();
+      ta.select();
+      if (ta.setSelectionRange) { ta.setSelectionRange(0, text.length); }
+      ok = document.execCommand("copy");
+    } catch (e) {
+      ok = false;
+    }
+
+    document.body.removeChild(ta);
+    if (selection && savedRange) {
+      selection.removeAllRanges();
+      selection.addRange(savedRange);
+    }
+    return ok;
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text).then(function () {
+        return true;
+      })["catch"](function () {
+        return legacyCopy(text);
+      });
+    }
+    return new Promise(function (resolve) {
+      resolve(legacyCopy(text));
+    });
+  }
+
+  var allTimer = null;
+  var allOriginal = btnAllText.textContent;
+
+  function flashAll(ok) {
+    btnAll.classList.add("done");
+    btnAllText.textContent = ok ? "Copiado" : "No se pudo copiar";
+    if (allTimer) { clearTimeout(allTimer); }
+    allTimer = setTimeout(function () {
+      btnAll.classList.remove("done");
+      btnAllText.textContent = allOriginal;
+    }, 1800);
+  }
+
+  function buildAll() {
+    return rows.map(function (r) {
+      return r.getAttribute("data-field") + ": " + r.getAttribute("data-value");
+    }).join("\n");
+  }
+
+  btnAll.addEventListener("click", function () {
+    var text = buildAll();
+    copyText(text).then(function (ok) {
+      flashAll(ok);
+      announce(ok ? "Se copiaron todos los datos." : "No se pudo copiar. Mantén presionado para seleccionar el texto.");
+    });
+  });
+
+  rows.forEach(function (row) {
+    var chip = row.querySelector(".chip");
+    var original = chip.textContent;
+    var timer = null;
+
+    row.addEventListener("click", function () {
+      var text = row.getAttribute("data-value");
+      copyText(text).then(function (ok) {
+        row.classList.add("copied");
+        chip.textContent = ok ? "Copiado" : "Error";
+        announce(ok ? (row.getAttribute("data-field") + " copiado.") : "No se pudo copiar.");
+        if (timer) { clearTimeout(timer); }
+        timer = setTimeout(function () {
+          row.classList.remove("copied");
+          chip.textContent = original;
+        }, 1600);
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
