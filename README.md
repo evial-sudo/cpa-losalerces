@@ -4,11 +4,23 @@ Página pública con los datos de transferencia bancaria del **Centro de Padres 
 
 - **Sitio publicado:** https://evial-sudo.github.io/cpa-losalerces/
 - **Publicado con:** GitHub Pages (gratis, permanente, HTTPS).
-- **Archivo único:** `index.html` (HTML + CSS + JS autocontenido, sin dependencias ni CDN).
+- **Archivo único:** `index.html` (HTML + CSS + JS + logo y favicon incrustados, sin dependencias ni CDN).
 
 > Importante: este repositorio usa **una sola rama, `gh-pages`**. GitHub Pages publica
 > desde esa rama. No crees ni edites otra rama: si editas una copia en otra rama, el sitio
 > no se actualizará y podrías confundir versiones.
+
+## Archivos
+
+| Archivo | Para qué sirve |
+|---|---|
+| `index.html` | El sitio completo. Es el único archivo que se publica. |
+| `logo-original.png` | Logo del Centro de Padres tal como se recibió. |
+| `actualizar-logo.py` | Vuelve a incrustar el logo dentro de `index.html`. |
+| `generar-qr.py` | Genera los PNG del código QR. |
+| `verificar-qr.py` | Comprueba que los QR apunten a la URL correcta. |
+| `qr-cpa-losalerces.png` | QR de alta resolución (1640×1640 px, nivel M). |
+| `qr-cpa-losalerces-poster.png` | QR con encabezado, para imprimir y pegar. |
 
 ## Cómo actualizar la página si cambian los datos
 
@@ -56,6 +68,22 @@ git push origin gh-pages
 - El botón **"Copiar todos los datos"** muestra "Copiado" y al pegar aparecen las 6 líneas.
 - Cada fila copia solo su valor y muestra "Copiado".
 
+## Cómo cambiar el logo
+
+1. Guarda el logo nuevo como `logo-original.png` (reemplazando el actual).
+2. Ejecuta:
+
+```bash
+pip3 install pillow
+python3 actualizar-logo.py logo-original.png index.html
+```
+
+El script recorta el margen blanco, comprime la imagen y la incrusta en `index.html`
+junto con el favicon. También deja `logo-web.png` y `favicon.png` por si los necesitas sueltos.
+3. Publica el cambio (commit y push a `gh-pages`).
+
+El logo se muestra dentro de un recuadro blanco para que se vea bien también en modo oscuro.
+
 ## Código QR
 
 El QR apunta a `https://evial-sudo.github.io/cpa-losalerces/` (nivel de corrección de errores M).
@@ -64,7 +92,7 @@ Se puede volver a generar con:
 ```bash
 pip3 install qrcode pillow
 python3 generar-qr.py
+python3 verificar-qr.py   # confirma que el QR apunta a la URL correcta
 ```
 
-El script `generar-qr.py` produce `qr-cpa-losalerces.png` (alta resolución).
 **Si cambia la URL del sitio, hay que regenerar el QR.**
