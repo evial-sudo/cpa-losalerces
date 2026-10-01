@@ -18,7 +18,7 @@ from PIL import Image, ImageDraw, ImageFont
 import qrcode
 from qrcode.constants import ERROR_CORRECT_M
 
-URL = "https://evial-sudo.github.io/cpa-losalerces/"
+URL = "https://cpa-losalerces.netlify.app/"
 BOSQUE = (20, 83, 45)        # verde bosque
 BLANCO = (255, 255, 255)
 GRIS = (76, 99, 87)

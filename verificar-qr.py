@@ -6,7 +6,7 @@ import sys
 
 import cv2
 
-ESPERADA = "https://evial-sudo.github.io/cpa-losalerces/"
+ESPERADA = "https://cpa-losalerces.netlify.app/"
 ARCHIVOS = ["qr-cpa-losalerces.png", "qr-cpa-losalerces-poster.png"]
 
 detector = cv2.QRCodeDetector()
