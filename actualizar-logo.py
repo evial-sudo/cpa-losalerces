@@ -97,8 +97,8 @@ def main():
         '<link rel="icon" type="image/png" href="data:image/png;base64,%s">\n'
         '<link rel="apple-touch-icon" href="data:image/png;base64,%s">' % (b64_fav, b64_fav)
     )
-    html, n = re.subn(r'<link rel="icon".*?</?\s*>?\n?', nuevo_iconos + "\n", html,
-                      count=1, flags=re.S)
+    # OJO: usar [^>]* (no .*? con DOTALL) para no comerse el "<" de la etiqueta siguiente.
+    html, n = re.subn(r'<link rel="icon"[^>]*>[ \t]*\n?', nuevo_iconos + "\n", html, count=1)
     cambios += n
     if n == 0:
         raise SystemExit("No se encontró la línea del favicon en %s" % destino)
@@ -111,6 +111,19 @@ def main():
     cambios += n
     if n == 0:
         raise SystemExit("No se encontró <img class=\"logo-img\"> en %s" % destino)
+
+    # --- 5: control de integridad del HTML --------------------------------
+    problemas = []
+    if html.count("<style>") != 1 or html.count("</style>") != 1:
+        problemas.append("la etiqueta <style> quedó rota")
+    if html.count('class="logo-img"') != 1:
+        problemas.append("el <img> del logo no quedó exactamente una vez")
+    if html.count('rel="icon"') != 1 or html.count('rel="apple-touch-icon"') != 1:
+        problemas.append("los iconos del navegador quedaron mal")
+    if "PLACEHOLDER" in html:
+        problemas.append("quedó un marcador sin reemplazar")
+    if problemas:
+        raise SystemExit("ERROR: " + "; ".join(problemas) + ". No se escribió el archivo.")
 
     open(destino, "w", encoding="utf-8").write(html)
     print("index.html actualizado (%d sustituciones)." % cambios)
